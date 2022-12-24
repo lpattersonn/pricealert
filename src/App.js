@@ -6,9 +6,10 @@ import { ThemeConsumer } from "react-bootstrap/esm/ThemeProvider";
 function App() {
   let [ticker, setTicker] = useState([]);
   let [search, setSearch] = useState("");
+  let [searchValue, setSearchValue] = useState("");
 
   axios
-    .get(`${search}.json`)
+    .get(`${searchValue.toUpperCase}`)
     .then((res) => {
       setTicker(res.ticker);
     })
@@ -19,10 +20,17 @@ function App() {
     <div className='App'>
       <form
         onSubmit={(e) => {
-          setSearch(e.target.value);
+          setSearchValue(search);
           console.log(search);
         }}>
-        <input type='text' name='search' value={search} />
+        <input
+          type='text'
+          name='search'
+          onChange={(e) => {
+            setSearch(e.target.value);
+          }}
+          value={search}
+        />
         <input type='submit' />
       </form>
     </div>
