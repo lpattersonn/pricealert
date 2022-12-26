@@ -11,10 +11,9 @@ function App() {
   let [search, setSearch] = useState("");
 
   axios
-    .get(`.json`)
+    .get(``)
     .then((res) => {
-      setTicker(res.data.ticker);
-      console.log(res);
+      setTicker(res.data);
     })
     .catch((err) => {
       console.log(err);
@@ -24,7 +23,7 @@ function App() {
       <div className='wrap'>
         <form>
           <input
-            class='form-control'
+            className='form-control'
             id='exampleFormControlInput1'
             type='text'
             name='search'
@@ -35,10 +34,10 @@ function App() {
             value={search}
           />
         </form>
-        <table class='table'>
+        <table className='table'>
           <thead>
             <tr>
-              <th scope='col'>#</th>
+              <th scope='col'>Symbol</th>
               <th scope='col'>First</th>
               <th scope='col'>Last</th>
               <th scope='col'>Handle</th>
